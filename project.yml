@@ -1,0 +1,66 @@
+name: Doday
+
+options:
+  bundleIdPrefix: com.ckiet1612
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+targets:
+  Doday:
+    type: application
+    platform: iOS
+    sources:
+      - Sources/Doday
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+    preBuildScripts:
+      - name: SwiftLint
+        basedOnDependencyAnalysis: false
+        script: |
+          export PATH="/opt/homebrew/bin:$PATH"
+          if command -v swiftlint >/dev/null 2>&1; then
+            swiftlint
+          else
+            echo "warning: SwiftLint chưa được cài (brew install swiftlint)"
+          fi
+
+  DodayTests:
+    type: bundle.unit-test
+    platform: iOS
+    # XCTest trong Xcode 27 yêu cầu tối thiểu iOS 17; app vẫn hỗ trợ iOS 15
+    deploymentTarget: "17.0"
+    sources:
+      - Tests/DodayTests
+    dependencies:
+      - target: Doday
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  Doday:
+    build:
+      targets:
+        Doday: all
+        DodayTests: [test]
+    test:
+      targets:
+        - DodayTests
