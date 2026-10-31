@@ -1,6 +1,6 @@
 # Doday 1.0 – Đặc tả sản phẩm (G1)
 
-Trạng thái: READY_FOR_REVIEW · Ngày lập: 30/10/2026 · Người duyệt: Chủ sản phẩm + Trưởng kỹ thuật (chờ chỉ định, chưa duyệt)
+Trạng thái: APPROVED (đặc tả G1) · Ngày lập: 30/10/2026 · Ngày duyệt: 31/10/2026 · Người duyệt: Chủ dự án (kiêm Chủ sản phẩm + Trưởng kỹ thuật), G1-SIGNOFF tại approval-batch §6; không phải nghiệm thu ứng dụng
 
 ## 0. Quy ước nhãn
 
@@ -10,35 +10,39 @@ Trạng thái: READY_FOR_REVIEW · Ngày lập: 30/10/2026 · Người duyệt: 
 | [ROADMAP Gx] | Đề xuất trong DODAY_IOS_ROADMAP.md; **chưa** phải quyết định đã duyệt |
 | [PROPOSED] | Đề xuất của bộ G1, cần chủ sản phẩm/trưởng kỹ thuật duyệt |
 | [ASSUMPTION] | Giả định làm việc, chưa kiểm chứng |
-| [NEEDS_CONFIRMATION] | Bắt buộc phải có câu trả lời trước khi G1 APPROVED |
-| [APPROVED dd/mm/yyyy – vai trò] | Quyết định đã duyệt. Hiện **chưa có mục nào** mang nhãn này |
+| [NEEDS_CONFIRMATION] | Cần quyết định trước cổng ghi trong decisions.md; không mặc nhiên tất cả chặn G1 |
+| [APPROVED dd/mm/yyyy – vai trò] | Quyết định đã duyệt, chỉ trong phạm vi xác nhận ở decisions.md §3; không chứng minh tính năng đã chạy |
 
 Mã quyết định (DEC-xx) xem `decisions.md`; mã yêu cầu (DODAY-…) xem `backlog.md`; chỉ số (Q-xx) xem `quality-and-acceptance.md`; rủi ro (R-xx) xem `risks.md`.
+
+Các tham số PROPOSED/ASSUMPTION còn mở: PO duyệt thay đổi hành vi/phạm vi, TL chốt giới hạn sau đo, LEGAL xác minh điều khoản; chủ dự án kiêm các vai trò này. **BATCH-AB ngày 31/10/2026** đã duyệt A1–A14 và hướng/kế hoạch B1–B9 theo `approval-batch.md`; không hỏi lại A, không coi B là kết quả đã đo/lựa chọn provider hoặc ký duyệt toàn G1.
 
 ## 1. Mục tiêu phiên bản 1.0
 
 Doday 1.0 hoàn chỉnh vòng giá trị **camera → khoảnh khắc → địa điểm → bản đồ** [SRC §1, §20; ROADMAP §1]:
 
 1. Người dùng mở app vào camera, chụp hoặc chọn ảnh và lưu khoảnh khắc mà không mất ảnh vì mạng, GPS hay Google chưa sẵn sàng.
-2. Khoảnh khắc được gắn địa điểm tự động khi đủ tin cậy, có đường xác nhận/sửa/bổ sung sau.
+2. Khoảnh khắc được gắn địa điểm tự động khi đủ tin cậy và có đầu vào hợp lệ qua gate riêng tư; không gọi Places theo mỗi ảnh. Có đường xác nhận/sửa/bổ sung sau, không bắt buộc gắn nơi.
 3. Người dùng có bản đồ cá nhân: nơi đã lưu, đã ghé, bộ sưu tập, Want to visit/Visited.
 4. Người dùng lưu địa điểm từ TikTok/Instagram qua Share Sheet, kể cả khi chưa xác định được địa điểm.
-5. Người dùng khám phá trải nghiệm công khai của cộng đồng tại địa điểm, kiểm tra thông tin Google cập nhật và mở Google Maps để chỉ đường.
-6. Có an toàn phát hành: xóa tài khoản, phân quyền ảnh, báo cáo/chặn, kiểm duyệt, hỗ trợ, chính sách công khai.
+5. Người dùng tìm và khám phá địa điểm, kiểm tra thông tin Google cập nhật và mở Google Maps để chỉ đường. **Trải nghiệm công khai của cộng đồng không có trong 1.0** (DEC-15 C, duyệt 30/10/2026); chỉ có ở bản phát hành công khai sau.
+6. Có an toàn phát hành: xóa tài khoản, phân quyền ảnh, hỗ trợ, chính sách công khai. Báo cáo/chặn/kiểm duyệt chuyển sang bản công khai cùng tính năng cộng đồng.
 
-Tiêu chí thành công phát hành được định nghĩa bằng chỉ số Q-01…Q-15 (ngưỡng đề xuất, chưa đo). Chỉ số hành vi ở SRC §18 dùng để ra quyết định sản phẩm, không phải điều kiện phát hành.
+> **Quyết định phạm vi 30/10/2026 (DEC-15 C), xác nhận lại 31/10 (OVERRIDE/DEC-26):** 1.0 ra mắt **chỉ riêng tư**. Định hướng "Personal yet social" [SRC §2] được giao một phần: 1.0 hoàn chỉnh phần cá nhân, phần social chờ duyệt bản phát hành riêng và người vận hành. Không hạng mục MVP nào bị xóa; phần công khai được đánh dấu `PUB` trong backlog.md. OVERRIDE cho thay các quy tắc xung đột khác theo ADD, không mở friends/community.
+
+Tiêu chí thành công phát hành được định nghĩa bằng chỉ số Q-01…Q-17 trong `quality-and-acceptance.md` (DEC-20 duyệt 31/10/2026; Q-06 tạm chốt, Q-15 chỉ PUB; chưa đo). Chỉ số hành vi ở SRC §18 dùng để ra quyết định sản phẩm, không phải điều kiện phát hành.
 
 ## 2. Định hướng không thay đổi
 
 - **Camera-first** [SRC §2, §4.1]: màn hình mặc định là camera, không có Home/Feed trung gian.
 - **Automatic-first** [SRC §2]: tự động khi đáng tin cậy; không tự động khi không đủ tin cậy [SRC §17.1].
-- **Location-centric** [SRC §2]: nội dung công khai luôn gắn một địa điểm.
+- **Location-centric** [SRC §2, điều chỉnh có duyệt OVERRIDE/DEC-25]: địa điểm vẫn là trục tổ chức/khám phá khi người dùng cho phép, không là điều kiện chụp/lưu/chia sẻ ảnh. Ảnh không nơi/Hide không xuất hiện trên trang, marker hoặc số đếm địa điểm; không thay Map bằng Feed. Quy tắc nguồn “công khai luôn có địa điểm” bị thay thế, không sửa văn bản gốc.
 - **Cấu trúc** [SRC §3]: hai khu vực chính Camera và Map; Profile là khu vực phụ (qua ảnh đại diện/menu). Map **không** được thay bằng Feed [SRC §12].
 - **Phân biệt nguồn dữ liệu** [SRC §2, §6.9]: dữ liệu Google Maps và nội dung Doday luôn tách bạch về giao diện và lưu trữ.
 
 ## 3. Người dùng mục tiêu (giả thuyết)
 
-Chưa có nghiên cứu người dùng. Toàn bộ persona dưới đây là **[ASSUMPTION]**, suy ra từ ví dụ trong nguồn (Đà Lạt, Hà Nội, quán cà phê, TikTok). Kiểm chứng ở G2 (≥5 người thử prototype) [ROADMAP G2]. Thị trường và nhóm tuổi: DEC-01, DEC-02.
+Chưa có nghiên cứu người dùng. Toàn bộ persona dưới đây là **[ASSUMPTION]**, suy ra từ ví dụ trong nguồn (Đà Lạt, Hà Nội, quán cà phê, TikTok). Kiểm chứng ở G2 (≥5 người thử prototype) [ROADMAP G2]. Đã chốt 30/10/2026: thị trường Việt Nam, giao diện tiếng Việt + tiếng Anh (DEC-01); từ 13 tuổi trở lên (DEC-02). Nhóm thử ở G2 nên có cả người 13–15 tuổi (kèm đồng ý của người đại diện) để kiểm tra luồng đăng ký có cổng tuổi.
 
 | Mã | Giả thuyết persona | Nhu cầu chính | Hành trình |
 | --- | --- | --- | --- |
@@ -46,22 +50,31 @@ Chưa có nghiên cứu người dùng. Toàn bộ persona dưới đây là **[
 | P2 | Người lướt TikTok/Instagram, hay "lưu để đi sau" nhưng thất lạc link | Lưu nơi thấy trên mạng xã hội bằng một thao tác chia sẻ; không mất link | J2, J4 |
 | P3 | Người đang tìm nơi mới để đi | Xem ảnh thực tế (không quảng cáo), biết nơi còn mở không, giờ mở cửa, rating tổng quan | J3, J4 |
 
-Điều cần kiểm chứng: (a) người dùng có chấp nhận đăng nhập trước khi chụp lần đầu (DEC-17); (b) tỷ lệ link TikTok/Instagram thực sự xác định được địa điểm; (c) mức sẵn lòng công khai ảnh tại địa điểm.
+Điều cần kiểm chứng: (a) người dùng có chấp nhận đăng nhập trước khi chụp lần đầu (DEC-17); (b) tỷ lệ link TikTok/Instagram thực sự xác định được địa điểm; (c) P3 có còn thấy giá trị khi 1.0 chưa có ảnh cộng đồng (R-19); (d) mức sẵn lòng công khai ảnh tại địa điểm (cho bản công khai).
 
 ## 4. Phạm vi 1.0
 
 ### 4.1 Trong phạm vi
 
 - 30 hạng mục MVP [SRC §15], ánh xạ một-một DODAY-MVP-01…30 trong `backlog.md`, gồm bộ sưu tập (MVP-29) và Want to visit/Visited (MVP-30).
-- Share Extension và dán liên kết (DODAY-EXT-*): **[ROADMAP §1] đề xuất đưa vào 1.0**, quyết định DEC-13 chưa duyệt. Nguồn mô tả luồng ở SRC §5.3, §7, §11 TH2 nhưng không đánh số trong 30 hạng mục.
+- Share Extension và dán liên kết (DODAY-EXT-*): **có trong 1.0** (DEC-13, duyệt 31/10/2026). Nguồn mô tả luồng ở SRC §5.3, §7, §11 TH2 nhưng không đánh số trong 30 hạng mục.
 - Dữ liệu bền vững và đồng bộ (DODAY-DATA-*), an toàn phát hành (DODAY-SAFE-*), tuân thủ Google (DODAY-GGL-*): yêu cầu bổ sung suy ra từ SRC §6.8, §13.6, §17 và ROADMAP §1.
 - Rating trung bình và **tổng lượt đánh giá** Google (MVP-22) thuộc 1.0 [SRC §15].
+- **OVERRIDE/DEC-14/28, 31/10/2026:** ảnh Google Places (GGL-10) và nội dung từng review (GGL-04) vào 1.0, chỉ tải khi người dùng yêu cầu xem khối tương ứng; không tải vì mở Map/chi tiết. Attribution/cache và trần Google vẫn áp dụng. Đây không phải nội dung cộng đồng Doday hoặc sản phẩm Google Photos.
+- **OVERRIDE/DEC-30:** nhật ký cá nhân (DATA-07) đọc lại Moment/thời điểm người dùng đã lưu; không theo dõi nền, dựng đường đi hoặc tự đánh dấu Visited.
 
 ### 4.2 Tùy chọn 1.0 / có thể hoãn 1.1
 
-- **Nội dung từng bài review Google** (văn bản, tác giả, thời gian, liên kết gốc) – DODAY-GGL-04. Nguồn cho phép ưu tiên sau [SRC §15, đoạn cuối]. Khuyến nghị [PROPOSED] hoãn sang 1.1 (DEC-14). Rating/tổng lượt **không** bị hoãn theo quyết định này.
+- Quyết định hoãn từng review sang 1.1 đã bị OVERRIDE/DEC-28 thay thế ngày 31/10/2026; **GGL-04 hiện thuộc 1.0**, không còn tùy chọn. Rating/tổng lượt vẫn tách riêng; SKU kết thúc phiên không tự cấp phép tải review.
 - Thông báo "địa điểm đã di chuyển" dùng movedPlace/movedPlaceId [SRC §6.4: "có thể"] – DODAY-GGL-05, [PROPOSED] làm trong 1.0 nếu chi phí thấp vì trường thuộc SKU Essentials IDs Only (xem `privacy-and-data.md` §6).
-- Bộ lọc "địa điểm vừa được cộng đồng chia sẻ" như marker riêng [SRC §5.2] – gói trong MVP-13, định nghĩa "vừa" là [PROPOSED] 7 ngày.
+### 4.2b Chuyển sang bản phát hành công khai (PUB) – đã duyệt 30/10/2026
+
+Theo DEC-15 C. Các mục dưới đây **không có trong binary 1.0**; khi mở công khai cần người kiểm duyệt, bản app mới qua App Review và qua lại cổng G9:
+
+- Đăng khoảnh khắc công khai và lựa chọn hiển thị (phần công khai của MVP-10, MVP-27).
+- Xem ảnh/trải nghiệm của người khác tại địa điểm (MVP-26), lớp marker "cộng đồng" và "cộng đồng mới chia sẻ" (phần cộng đồng của MVP-13), bộ lọc "Địa điểm từ cộng đồng" (MVP-15).
+- Báo cáo, chặn, lọc nội dung, công cụ kiểm duyệt (SAFE-03, SAFE-04, SAFE-06, phần kiểm duyệt của SAFE-05/SAFE-07).
+- Hiển thị hồ sơ người dùng cho người khác (MVP-02 chỉ còn hồ sơ của chính mình).
 
 ### 4.3 Ngoài phạm vi 1.0
 
@@ -74,8 +87,8 @@ Bất kỳ yêu cầu nào thêm vào ngoài danh sách này phải qua sổ quy
 - Mở app (đã đăng nhập, đã qua quyền lần đầu) → **Camera**. Từ Camera có lối vào Map bằng một chạm [SRC §4.1].
 - **Map**: bản đồ + thanh tìm kiếm + bộ lọc + bottom sheet thẻ địa điểm + nút mở danh sách đã lưu/bộ sưu tập (bảng phụ, không phải tab) [SRC §5, §9.1].
 - **Trang chi tiết địa điểm**: 5 phần theo SRC §8.1; khối Google và khối Doday Experiences tách riêng có nhãn nguồn.
-- **Mục chờ xử lý** (Share Sheet chưa xác định địa điểm, nháp chưa có địa điểm): truy cập từ Map/danh sách đã lưu, có badge số lượng [PROPOSED].
-- **Profile**: qua ảnh đại diện; chứa hồ sơ, khoảnh khắc đã chia sẻ, quyền riêng tư, quản lý nội dung, người bị chặn, hỗ trợ, đăng xuất, xóa tài khoản [SRC §10].
+- **Mục chờ xử lý** (Share Sheet chưa xác định địa điểm, nháp chưa có địa điểm): truy cập từ Map/danh sách đã lưu, có badge số lượng [APPROVED A12]. Ảnh chủ động hidden không bị coi là lỗi phải thêm nơi.
+- **Profile**: qua ảnh đại diện; chứa hồ sơ, khoảnh khắc của tôi/nhật ký cá nhân, quyền riêng tư, quản lý nội dung, hỗ trợ, đăng xuất, xóa tài khoản [SRC §10; ADD §7/8, DEC-30]. [APPROVED A12] nhật ký trong Khoảnh khắc của tôi, theo thời gian, không tab chính mới; B3 hoàn thiện UI ở G2. Cài đặt có quản lý nhiều vùng và công tắc Ẩn trong vùng riêng tư mặc định bật, có thể tắt; độc lập Hide Location. "Người bị chặn" và "khoảnh khắc đã chia sẻ công khai" chỉ PUB.
 
 ## 6. Hành trình cốt lõi
 
@@ -85,21 +98,22 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
 
 - **ĐV:** người dùng đã đăng nhập; quyền camera (có/không); quyền vị trí (chính xác/gần đúng/từ chối); mạng (có/không).
 - **B1** Mở app → camera preview sẵn sàng, nút chụp hoạt động (Q-01). Không chờ Map, đồng bộ hay backend [SRC §17.4].
-- **B2** Chụp (hoặc chọn ảnh thư viện → J1b). Ngay khi bấm chụp, ứng dụng ghi **vị trí lúc chụp** (tọa độ, độ chính xác, thời điểm lấy mẫu) nếu có quyền.
-- **B3** Ảnh được ghi thành **nháp bền vững** trên máy (Q-03) trước mọi tác vụ mạng. Nhận diện địa điểm chạy song song, không chặn.
-- **B4** Màn xem lại: ô tiêu đề tùy chọn (placeholder, không bắt buộc), chip địa điểm (đang tìm / đã gắn / cần xác nhận / chưa có), lựa chọn hiển thị (mặc định theo DEC-11), nút Xong.
+- **B2** Chụp (hoặc chọn ảnh thư viện → J1b). Đánh giá Hide/zone trên máy bằng mẫu vị trí lúc chụp nếu có quyền/đủ điều kiện; không ghi GPS vào nháp chỉ vì được cấp quyền. Retention tối thiểu theo DEC-31, không chờ GPS mới để chụp.
+- **B3** Ảnh nguồn + nháp ghi **bền vững** (Q-03) trước xử lý phái sinh/mạng (A5). Tự gắn/xác nhận từ ngữ cảnh hợp lệ nếu có, chạy độc lập; **0 request Places mới do chụp**. Không đầu vào thì để chưa gắn; tác vụ gần đây/nhận diện riêng mới lookup sau gate BR-L8/9. B1/B2 duyệt phương pháp thử; T_auto/T_confirm/TTL ngữ cảnh chốt trước dùng theo DEC-27.
+- **B4** Màn xem lại: ảnh đầu ra vuông 1:1 (BR-M10), ô tiêu đề tùy chọn (placeholder, không bắt buộc), chip địa điểm (đang tìm / đã gắn / cần xác nhận / chưa có), nhãn "Chỉ mình bạn xem được" (1.0 không có lựa chọn công khai – BR-M0), nút Xong. Xử lý ảnh không được trì hoãn ghi nháp bền vững (BR-M11).
 - **B5** Xong → khoảnh khắc lưu, trạng thái đồng bộ hiển thị riêng (đã lưu trên máy / đang tải lên / đã đồng bộ / lỗi cần thử lại). Trở về camera.
-- **KQ:** khoảnh khắc riêng tư (hoặc công khai nếu đủ điều kiện §7.1) gắn địa điểm; xuất hiện trên Map cá nhân tại địa điểm đó; nếu chưa có địa điểm thì nằm trong Mục chờ xử lý.
+- **KQ:** khoảnh khắc riêng tư (bản công khai: theo quyền đã cấu hình §7.1), có hoặc không nơi. Chỉ hiện trên Map khi có địa điểm được phép hiển thị và tọa độ hợp lệ; chưa xác định thì có thể bổ sung trong Mục chờ xử lý. **Hide chủ động không phải lỗi/chờ bắt buộc xử lý**, không làm mất ảnh khỏi khoảnh khắc của tôi/nhật ký.
 - **L/DP:**
   - Từ chối camera → màn giải thích + nút mở Cài đặt; vẫn có nút chọn ảnh thư viện và nút vào Map.
   - Từ chối vị trí / vị trí gần đúng / GPS cũ hơn ngưỡng → không tự gắn; lưu nháp chưa có địa điểm hoặc hiện danh sách xác nhận (nếu gần đúng vẫn cho đề xuất); người dùng chọn thủ công sau.
-  - Offline → lưu cục bộ, hàng đợi upload; nhận diện Places chạy lại khi có mạng (dùng vị trí lúc chụp, không dùng vị trí hiện tại).
+  - Offline → lưu cục bộ, hàng đợi upload không chứa mẫu GPS. **[APPROVED 31/10/2026 – ZONE/DEC-31]** mẫu GPS đánh giá/nhận diện chỉ RAM ≤60 s, không DB/queue/backup hoặc làm tròn để giữ lâu. Không còn mẫu hợp lệ/gate cho phép → ảnh chưa có nơi, chọn sau; không dùng GPS hiện tại thay thời điểm chụp.
   - Places lỗi/quá hạn mức/timeout → chip "Chưa xác định địa điểm", không chặn Xong.
   - Hết dung lượng máy → báo lỗi rõ, **không** báo đã lưu.
+  - Tạo ảnh vuông/nén thất bại sau khi đã ghi nguồn bền vững → giữ nguồn trong nháp, hiện "Đã lưu trên máy – cần xử lý ảnh", cho thử lại/xóa; không upload ảnh chưa hợp lệ hoặc báo đã đồng bộ (BR-M11).
   - App bị đóng giữa chừng → nháp đã ghi vẫn còn khi mở lại; không tạo bản trùng.
   - Bị gián đoạn camera (cuộc gọi, đa nhiệm) → phiên camera khôi phục khi quay lại (Q-02).
 
-**J1b – Chọn ảnh từ thư viện** [SRC §4.4, §8.3]: dùng metadata vị trí trong ảnh nếu có và quyền cho phép; nếu không có, chuyển sang chọn địa điểm thủ công. **Tuyệt đối không** dùng GPS hiện tại của thiết bị cho ảnh thư viện [ROADMAP G5]. Thời điểm của khoảnh khắc = thời điểm chụp trong metadata nếu có, ngược lại = thời điểm chọn và ghi rõ là "thời điểm thêm".
+**J1b – Chọn ảnh từ thư viện** [SRC §4.4, §8.3]: đầu ra cũng 1:1 theo BR-M10, không chỉ che bằng UI trong khi upload file chữ nhật. Metadata của chính ảnh chỉ dùng sau gate Hide/zone/consent và trigger hợp lệ BR-L8/9; việc chọn ảnh không tự gửi EXIF tới Google. Không có dữ liệu thì để không nơi, cho chọn thủ công sau, không bắt chọn để lưu. **Tuyệt đối không** dùng GPS hiện tại thay ảnh thư viện [ROADMAP G5]. Thời điểm = metadata chụp nếu có, ngược lại thời điểm chọn với nhãn "thời điểm thêm".
 
 ### J2 – Lưu từ TikTok/Instagram [SRC §7, §11 TH2]
 
@@ -110,7 +124,7 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
 - **B4** Xác nhận → Place (tạo mới hoặc dùng bản ghi có sẵn theo Google Place ID) + SavedPlace (Want to visit) → địa điểm xuất hiện trên Map. Người dùng quay lại TikTok/Instagram.
 - **KQ:** hoặc một SavedPlace liên kết URL nguồn, hoặc một mục PENDING giữ URL gốc trong Mục chờ xử lý.
 - **L/DP:**
-  - Chưa đăng nhập ở app chính → extension báo "Mở Doday để đăng nhập", không lưu vào tài khoản nào [PROPOSED]; không ép mở app chính bằng mẹo [ROADMAP G8].
+  - Chưa đăng nhập ở app chính → extension báo "Mở Doday để đăng nhập", không lưu vào tài khoản nào [APPROVED A13]; không ép mở app chính bằng mẹo [ROADMAP G8].
   - Offline / timeout → lưu PENDING cục bộ, xử lý khi app chính chạy.
   - Link rút gọn, hết hạn, riêng tư, bị chặn, không có dữ liệu địa điểm → PENDING kèm lý do; người dùng tìm kiếm, chọn trên bản đồ hoặc thêm thủ công.
   - Gửi lại cùng URL → không tạo SavedPlace/ExternalSource trùng; báo "Đã có trong Doday".
@@ -119,14 +133,17 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
 
 ### J3 – Khám phá rồi lưu [SRC §5.3, §11 TH3]
 
-- **ĐV:** Map mở; có/không có địa điểm công khai trong vùng nhìn; quyền vị trí (để "gần tôi").
-- **B1** Từ Camera chạm Map. Map hiển thị marker theo viewport, gom nhóm khi dày (MVP-16), phân biệt: đã lưu / đã ghé / cộng đồng chưa lưu / cộng đồng mới chia sẻ (MVP-13).
+> **1.0 (DEC-15 C):** khám phá dựa trên tìm kiếm Google và bản đồ cá nhân. Không có marker cộng đồng, ảnh của người khác hay số khoảnh khắc công khai; các phần đó ghi "(bản công khai)" bên dưới.
+
+- **ĐV:** Map mở; quyền vị trí (để "gần tôi"); (bản công khai) có/không có địa điểm công khai trong vùng nhìn.
+- **B1** Từ Camera chạm Map. Map hiển thị dữ liệu Doday và cache còn quyền dùng, marker theo viewport, gom nhóm khi dày (MVP-16), **không gọi Places do mở/pan/zoom**. Phân biệt đã lưu / đã ghé / kết quả tìm kiếm chưa lưu; (bản công khai) thêm cộng đồng (MVP-13). Thiếu tọa độ hợp lệ → giữ nơi trong danh sách, không vẽ marker giả hoặc refresh tự động (DEC-29).
 - **B2** Tìm theo tên/khu vực/loại hoặc lọc (MVP-14, MVP-15).
-- **B3** Chạm marker → bottom sheet: ảnh đại diện, tên, khu vực, business status, rating Google nếu có, vài ảnh Doday nổi bật, số khoảnh khắc công khai, trạng thái lưu, nút xem chi tiết [SRC §5.4].
-- **B4** Mở chi tiết → khối Google (truy xuất mới, §7.3) và khối Doday Experiences tách riêng.
+- **B3** Chạm marker → bottom sheet: tên/ảnh hoặc biểu tượng và dữ liệu còn quyền dùng, trạng thái lưu, nút xem chi tiết; business status/rating chưa có ghi chưa tải, không gọi Google ảnh/review để làm ảnh bìa. Nếu người dùng yêu cầu xem khối thông tin Google, lấy Details tối thiểu; (bản công khai) chỉ ảnh/số đếm được phép gắn địa điểm [SRC §5.4; OVERRIDE/DEC-29].
+- **B4** Mở chi tiết → khối Google (truy xuất mới, §7.3) và khối Doday tách riêng; ở 1.0 khối Doday là "Khoảnh khắc của bạn tại đây".
+- **B4a** Muốn xem ảnh Google/từng review → chủ động mở khối tương ứng mới tải metadata/media hoặc `reviews`, có attribution; lỗi/quota chỉ ảnh hưởng khối đó, vẫn lưu nơi/xem Doday được (GGL-04/10).
 - **B5** Chạm Lưu → SavedPlace (Want to visit), marker đổi kiểu ngay.
 - **KQ:** địa điểm có trong bản đồ cá nhân; không cần chọn bộ sưu tập [SRC §5.3].
-- **L/DP:** không có nội dung cộng đồng → trạng thái trống thân thiện, mời chia sẻ đầu tiên [SRC §8.3]; Places lỗi → vẫn xem được nội dung Doday và nút mở Google Maps; offline → hiện dữ liệu Doday đã đồng bộ, khối Google "Không tải được, thử lại"; từ chối vị trí → "gần tôi" bị tắt có giải thích, tìm theo khu vực vẫn dùng được.
+- **L/DP:** chưa có khoảnh khắc của chính người dùng tại nơi đó → trạng thái trống mời chụp/lưu khoảnh khắc riêng (bản công khai: mời chia sẻ đầu tiên [SRC §8.3]); Places lỗi → vẫn xem được nội dung Doday và nút mở Google Maps; offline → hiện dữ liệu Doday đã đồng bộ, khối Google "Không tải được, thử lại"; từ chối vị trí → "gần tôi" bị tắt có giải thích, tìm theo khu vực vẫn dùng được.
 
 ### J4 – Mở lại nơi đã lưu, kiểm tra và chỉ đường [SRC §6.1, §6.7, §11 TH4]
 
@@ -140,27 +157,34 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
 
 ## 7. Quy tắc nghiệp vụ
 
+**Bổ sung 31/10/2026:** `privacy-api-addendum.md` và `approval-batch.md` ghi ADD/OVERRIDE/ZONE/COST/BATCH-AB. Giữ private-only; A chốt chính sách kỹ thuật, B chốt kế hoạch/cổng xác minh, chưa có kết quả thực nghiệm. Zone local-only, công tắc bảo vệ mặc định bật/có thể tắt trong Cài đặt; Hide độc lập vẫn mặc định bật, radius 200 m (100–1.000), GPS RAM ≤60 s. Ưu tiên sản phẩm P0 riêng tư > P1 trải nghiệm > P2 vận hành, khác mức nghiêm trọng lỗi.
+
 ### 7.1 Ảnh và khoảnh khắc
 
-- BR-M1 Tiêu đề tùy chọn, tối đa [PROPOSED] 120 ký tự, không hashtag/danh mục/mô tả bắt buộc [SRC §4.3]. Bỏ trống vẫn hoàn tất được.
+- BR-M1 Tiêu đề tùy chọn, tối đa 120 ký tự [APPROVED A12], không hashtag/danh mục/mô tả bắt buộc [SRC §4.3]. Bỏ trống vẫn hoàn tất được.
 - BR-M2 Nhận diện địa điểm không bao giờ chặn chụp, xem lại hay lưu [SRC §4.2].
 - BR-M3 **Nháp** (riêng tư) được phép chưa có địa điểm và bổ sung sau [ROADMAP G1].
-- BR-M4 **Công khai** chỉ khi: (a) đã đăng nhập, (b) có địa điểm (Place đã xác nhận hoặc tự gắn), (c) người dùng chủ động chọn "Công khai" ở lần đăng đó, (d) tài khoản không bị khóa. Nếu thiếu (b), lựa chọn Công khai bị vô hiệu kèm lý do [ROADMAP G1].
-- BR-M5 Mặc định cho khoảnh khắc mới: [PROPOSED] **Riêng tư**. Đây là đề xuất của roadmap, **chưa duyệt** (DEC-11). Ứng dụng không tự chuyển sang công khai từ bất kỳ tín hiệu nào.
+- BR-M0 **1.0: mọi khoảnh khắc là Riêng tư** (DEC-15 C). Không lựa chọn Công khai; server từ chối công khai (SAFE-10). Các nhánh public của BR-M4…M7/BR-C* chỉ PUB; mặc định an toàn/ẩn-xóa/strip GPS BR-M5/6/8 vẫn áp dụng cho riêng tư 1.0.
+- BR-M4 **Bản chia sẻ sau, APPROVED OVERRIDE/DEC-25/32:** đăng ảnh không bắt buộc Place; `display_place_id` được null/hidden. Công khai chỉ khi đã đăng nhập, tài khoản được phép, bản phát hành đã mở chia sẻ và quyền ảnh do người dùng chọn/cấu hình cho phép; không cần chọn lại public từng lần. Địa điểm có quyền độc lập; ảnh hidden/không nơi không vào trang/marker/số đếm địa điểm. **Thay điều kiện có Place + public từng lần của ROADMAP G1**, có nhật ký duyệt; 1.0 vẫn BR-M0.
+- BR-M5 **APPROVED OVERRIDE/DEC-11/32:** bản chia sẻ dùng mặc định hai trục ảnh/địa điểm người dùng thiết lập, nhãn hiện tại rõ và Hide một thao tác; thay mặc định chỉ ảnh tương lai, không đổi ảnh cũ. Chưa cấu hình hoặc không chắc chắn → ảnh riêng tư, vị trí ẩn. Không suy GPS, nhận diện hoặc Hide-off ra public. Với 1.0 ảnh luôn owner, vị trí owner/hidden; không hiển thị điều khiển public/friends.
 - BR-M6 Đổi Công khai → Riêng tư hoặc xóa có hiệu lực ở API, tìm kiếm, số đếm, ảnh bìa, thumbnail và URL ảnh Doday phân phối (`privacy-and-data.md` §4).
 - BR-M7 Sửa địa điểm của khoảnh khắc công khai → khoảnh khắc chuyển sang địa điểm mới; không để lại bản ở địa điểm cũ.
-- BR-M8 Ảnh công khai được loại metadata vị trí chính xác trước khi phân phối; địa điểm công khai không đồng nghĩa công khai tọa độ chụp thô [ROADMAP G9].
-- BR-M9 1.0 chỉ hỗ trợ ảnh tĩnh, một ảnh/khoảnh khắc [ASSUMPTION – nguồn chỉ nói "ảnh"; video ngoài phạm vi theo SRC §16].
+- BR-M8 **Mọi ảnh/thumbnail upload**, kể cả riêng tư, được loại EXIF GPS trước upload [APPROVED A1]; gốc local không bị thay và Place liên kết riêng. Địa điểm hiển thị không đồng nghĩa hiển thị tọa độ chụp thô. Quy tắc này áp dụng 1.0, không chỉ PUB.
+- BR-M9 1.0 ảnh tĩnh, một ảnh/khoảnh khắc [APPROVED A12]; video ngoài phạm vi theo SRC §16.
+- BR-M10 **APPROVED – DEC-07, chủ dự án (PO/TL), 31/10/2026, cập nhật theo CROP:** ảnh camera/thư viện chuẩn hóa hướng EXIF rồi **cắt vuông ở giữa tự động**, resize đồng tỉ lệ; **không có bước xem trước hoặc xác nhận crop**, không chỉnh crop/đệm viền, không kéo giãn. Bản chính tối đa **2048 × 2048 px**, thumbnail tối đa **400 × 400 px**, không phóng lớn ảnh nhỏ; file giải mã có chiều rộng = chiều cao, không chỉ che mép bằng UI. Chỉ upload bản xử lý, **ảnh gốc chỉ giữ trên máy**, có thể mất khi xóa app/mất máy. Màn xem lại đã có để nhập tiêu đề/Hide không phải bước duyệt vùng cắt; không thêm thao tác vì crop. Tỉ lệ 1:1 không bảo đảm số byte; chất lượng/codec nén còn [PROPOSED, TL chốt trước G4] theo kiểm đo Q-09.
+- BR-M11 **[APPROVED BATCH-AB A5, DEC-07]:** ghi bền vững nguồn + nháp trước khi xử lý phái sinh, vẫn phải đạt Q-03; tác vụ xử lý không chờ GPS/Google/upload. Lỗi tạo vuông/nén không được xóa nguồn, đánh dấu "Đã đồng bộ" hoặc gửi ảnh chữ nhật làm bản chính. Nháp lỗi hiện "Đã lưu trên máy – cần xử lý ảnh", cho thử lại/xóa; retry cùng Moment ID (Q-04). BE kiểm kích thước giải mã, từ chối bản chính/thumbnail không vuông, không báo synced khi còn lỗi. Chưa kiểm thử.
 
 ### 7.2 Vị trí và nhận diện địa điểm
 
-- BR-L1 Ba nhánh [SRC §4.2, ROADMAP G5]: **Tự gắn** khi điểm tin cậy ≥ ngưỡng T_auto; **Xác nhận** (tối đa [PROPOSED] 5 ứng viên, một chạm) khi T_confirm ≤ điểm < T_auto hoặc có ≥2 ứng viên sát điểm; **Chưa gắn** khi dưới T_confirm hoặc không có vị trí. T_auto/T_confirm được hiệu chỉnh ở G2/G5 để đạt Q-05 (precision) trước, rồi mới tối ưu Q-06 (coverage).
+- BR-L1 Ba nhánh [SRC §4.2, ROADMAP G5]: **Tự gắn** khi điểm tin cậy ≥ T_auto; **Xác nhận** (tối đa 5 ứng viên, một chạm; B1 duyệt thử) khi T_confirm ≤ điểm < T_auto hoặc ≥2 ứng viên sát điểm; **Chưa gắn** khi dưới T_confirm hoặc không vị trí. T_auto/T_confirm hiệu chỉnh/chốt trước dùng ở G2/G5 để đạt Q-05 trước Q-06; chưa có giá trị cuối.
 - BR-L2 Không bao giờ quy tắc "chọn nơi gần nhất" [SRC §4.4]. Điểm tin cậy kết hợp khoảng cách so với bán kính độ chính xác, mật độ ứng viên, loại địa điểm, độ mới của mẫu vị trí.
-- BR-L3 Không tự gắn khi: quyền vị trí gần đúng (reduced accuracy), độ chính xác ngang kém hơn [PROPOSED] 50 m, mẫu vị trí cũ hơn [PROPOSED] 60 giây so với lúc chụp, hoặc có ≥2 ứng viên trong bán kính độ chính xác. Các ngưỡng này là giả thuyết, kiểm chứng ở G2.
+- BR-L3 Không tự gắn khi: vị trí gần đúng, accuracy >50 m, mẫu cũ >60 giây so với lúc chụp, hoặc ≥2 ứng viên trong bán kính sai số. **B1 duyệt các ngưỡng thử khởi điểm**, chưa chứng minh hiệu quả; kiểm chứng/chốt trước đo G2. Tuổi mẫu khác retention RAM ≤60 s từ lúc nhận mẫu.
 - BR-L4 Ảnh thư viện: chỉ dùng tọa độ trong metadata ảnh khi có và được phép; không dùng GPS hiện tại; không xin quyền thư viện toàn phần chỉ để đọc GPS [ROADMAP G2].
 - BR-L5 GPS/nhận diện **không** làm nội dung thành công khai và **không** đặt Visited (BR-S3).
 - BR-L6 Vị trí dùng là vị trí **lúc chụp**, không phải vị trí lúc upload hoặc lúc có mạng lại.
 - BR-L7 Người dùng luôn sửa được địa điểm sau khi lưu (MVP-07).
+- BR-L8 **APPROVED A1–4/DEC-31:** kiểm Hide và zone trên máy trước gửi nhận diện/retry/nhận kết quả; khi bảo vệ zone bật, inside/uncertain → hidden/no outbound, Place thủ công không bypass. Công tắc mặc định bật, quản lý vùng/tắt tại Cài đặt, lưu local theo tài khoản; tắt không tắt Hide, cấp consent/public, khôi phục Place ảnh cũ hoặc replay job. Hide độc lập mặc định bật. Consent bên ngoài riêng/rút được; revision cũ vô hiệu/hidden thắng. Tách GPS thực tế, Place nhận diện, Place hiển thị; ảnh không nơi/ẩn nơi vẫn hợp lệ. Chi tiết phụ lục §3 và approval-batch §4.
+- BR-L9 **APPROVED OVERRIDE/DEC-27/B1:** không Nearby theo ảnh/GPS tick, không Places do mở app/camera/Map/pan/zoom. BR-L1 không cấp phép gọi Google. Nearby chỉ khi cần và chủ động yêu cầu gần đây/nhận diện; ngữ cảnh chỉ dùng lại sau gate/TTL được TL/QA chốt trước G2, không làm mới vì chụp. Không ngữ cảnh thì lưu chưa gắn; không offline-retry GPS bỏ gate. Giữ Q-05/06 và mẫu số gồm lỗi/quota/không kết quả.
 
 ### 7.3 Danh mục địa điểm và dữ liệu Google
 
@@ -173,42 +197,52 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
   - **Đang mở/đóng lúc xem** (Google, từ currentOpeningHours): mở / đóng / không có dữ liệu.
   - **Trạng thái cá nhân** (Doday): Want to visit / Visited.
 - BR-P6 Thiếu dữ liệu → hiển thị "Chưa có thông tin"; không hiển thị 0 sao, không suy "đang đóng", không phỏng đoán [SRC §6.3, §17.2].
-- BR-P7 Truy xuất Google khi mở chi tiết, theo field mask của từng màn hình; không gọi khi kéo bản đồ hay mở lại thẻ không cần thiết [SRC §6.8]. Không lưu nội dung Places ngoài các ngoại lệ chính sách cho phép (`privacy-and-data.md` §6).
-- BR-P8 Nội dung Google và Doday tách khối, có nhãn nguồn/attribution; rating Google không được gọi là đánh giá Doday [SRC §6.6].
+- BR-P7 Chỉ truy xuất Google khi người dùng cần khối chi tiết/tìm kiếm theo ma trận phụ lục §4, Field Mask tối thiểu; không `*`, không prefetch trường chưa xem, không Places chỉ vì mở/kéo/zoom Map [SRC §6.8; ADD/OVERRIDE]. Chỉ đường dùng Maps URL, không Routes; không Geocoding dư thừa. **Photos/từng review thuộc 1.0 nhưng chỉ tải khi chủ động xem** (DEC-14/28); không lưu bytes ảnh Google như ảnh Doday, không cache photo name. Cache theo trường/TTL hợp lệ, không dùng Place ID để sao chép Google vô hạn (`privacy-and-data.md` §6).
+- BR-P8 **APPROVED OVERRIDE/DEC-29:** Google payload hết quyền dùng phải purge; giữ SavedPlace/ID, nhãn/pin người dùng thực sự tạo và quan hệ Doday. Thiếu tên dùng nhãn trung tính, thiếu tọa độ chuyển danh sách; không marker giả/không xóa nơi. Chỉ lệnh xem chi tiết/làm mới của người dùng mới có thể lấy Google mới; không làm mới toàn viewport. Business status thiếu/hết hạn là chưa xác định, không trạng thái hiện tại.
+- BR-P9 Nội dung Google và Doday tách khối, có nhãn nguồn/attribution; rating Google không được gọi là đánh giá Doday [SRC §6.6].
 
 ### 7.4 Đã lưu, bộ sưu tập, Want to visit/Visited
 
 - BR-S1 Lưu không bắt nhập ghi chú/chọn bộ sưu tập; mặc định Want to visit [SRC §5.3, §9.2].
 - BR-S2 Một địa điểm thuộc nhiều bộ sưu tập; xóa bộ sưu tập không xóa SavedPlace, Place hay ảnh; bỏ lưu không xóa Place chung hay khoảnh khắc của người khác [ROADMAP G7].
-- BR-S3 Visited chỉ do người dùng đặt. Ứng dụng [PROPOSED] chỉ được **gợi ý** "Đánh dấu đã ghé?" khi người dùng lưu một khoảnh khắc đã **xác nhận** tại địa điểm đó; không tự đổi do GPS đi ngang [SRC §9.3].
-- BR-S4 Bỏ lưu một nơi đang có khoảnh khắc của chính người dùng: [PROPOSED] marker vẫn hiện ở lớp "khoảnh khắc của tôi"; khoảnh khắc không bị xóa.
-- BR-S5 Bộ sưu tập là riêng tư trong 1.0 [PROPOSED; chia sẻ bộ sưu tập không có trong nguồn].
+- BR-S3 Visited chỉ do người dùng đặt; **gợi ý** "Đánh dấu đã ghé?" khi lưu Moment đã xác nhận tại nơi đó, không tự đổi do GPS [SRC §9.3; APPROVED A12].
+- BR-S4 Bỏ lưu không xóa Moment; lớp "khoảnh khắc của tôi" giữ ảnh, chỉ có marker khi Place được phép/đủ tọa độ hợp lệ [APPROVED A12; BR-P8].
+- BR-S5 Bộ sưu tập riêng tư trong 1.0 [APPROVED A12; chia sẻ bộ sưu tập không trong nguồn].
 
 ### 7.5 Share Sheet và mục chờ xử lý
 
 - BR-X1 **Thành công lưu** = ghi được ExternalSource bền vững (URL gốc, nguồn, thời điểm, tài khoản) **hoặc** một SavedPlace. Lưu URL ≠ tự trích xuất địa điểm; hai tỷ lệ đo riêng (Q-08, Q-08b).
-- BR-X2 **Mục chờ xử lý (PENDING)** = ExternalSource đã lưu nhưng chưa liên kết Place. Trạng thái: `PENDING` → `RESOLVED` (đã liên kết Place) / `DISMISSED` (người dùng bỏ). Mục PENDING không hết hạn tự động [PROPOSED]; có badge số lượng.
+- BR-X2 **Mục chờ xử lý (PENDING)** = ExternalSource đã lưu nhưng chưa liên kết Place. `PENDING` → `RESOLVED` / `DISMISSED`. Không hết hạn tự động; có badge số lượng, truy cập từ Map/list [APPROVED A12].
 - BR-X3 Trích xuất chỉ dùng: dữ liệu ứng dụng nguồn đưa vào Share Sheet, metadata công khai của URL mà điều khoản nguồn cho phép đọc, hoặc API chính thức nếu có thỏa thuận. Không scraping trái điều khoản, không đăng nhập thay người dùng, không vượt cơ chế bảo vệ [ROADMAP G8]. Không cam kết trích xuất được mọi link [SRC §7.2].
-- BR-X4 Nếu backend đọc URL: chỉ https, giới hạn redirect [PROPOSED 3], timeout [PROPOSED 5 s], dung lượng [PROPOSED 1 MB], chặn địa chỉ mạng nội bộ (SSRF) [ROADMAP G8].
+- BR-X4 Nếu backend được phép đọc URL: chỉ https, tối đa 3 redirect, timeout 5 s, dung lượng 1 MB, chặn mạng nội bộ/SSRF [APPROVED A13]. Giới hạn kỹ thuật không thay quyền đọc metadata cần LEGAL xác minh.
 - BR-X5 Chuẩn hóa URL (bỏ tham số theo dõi theo danh sách cho phép) làm khóa chống trùng theo tài khoản.
 
 ### 7.6 Tài khoản, nháp và đồng bộ
 
-- BR-A1 Đăng nhập: [PROPOSED] bắt buộc một lần trước lần chụp đầu tiên (DEC-17, phương án A). Nếu chủ sản phẩm chọn cho phép chụp khi chưa đăng nhập (phương án B), áp dụng BR-A2b.
-- BR-A2b Nháp khách (chỉ khi chọn phương án B): lưu trong vùng "chưa có chủ"; khi đăng nhập lần đầu hỏi rõ "Chuyển N nháp vào tài khoản X?"; không bao giờ tự chuyển; đã chuyển thì không chuyển lần nữa sang tài khoản khác.
+- BR-A1 Đăng nhập bắt buộc một lần trước lần chụp đầu tiên (DEC-17 phương án A, duyệt 31/10/2026). Phương thức: Sign in with Apple hoặc email OTP (DEC-05).
+- BR-A2b *(Không áp dụng cho 1.0 vì DEC-17 chọn A; giữ cho tham khảo.)* Nháp khách: lưu trong vùng "chưa có chủ"; khi đăng nhập lần đầu hỏi rõ "Chuyển N nháp vào tài khoản X?"; không bao giờ tự chuyển; đã chuyển thì không chuyển lần nữa sang tài khoản khác.
 - BR-A3 Dữ liệu cục bộ **phân vùng theo tài khoản**. Đăng xuất khi còn mục chưa đồng bộ → cảnh báo số lượng, lựa chọn "Đợi đồng bộ" / "Đăng xuất, giữ trên máy cho tài khoản này" / "Xóa khỏi máy". Mục giữ lại chỉ hiển thị và upload khi đúng tài khoản đó đăng nhập lại.
 - BR-A4 Đổi tài khoản: không hiển thị, không upload, không gộp dữ liệu của tài khoản A vào B, kể cả hàng đợi upload và mục PENDING của extension [ROADMAP G1].
 - BR-A5 Offline: chụp, lưu nháp, lưu/bỏ lưu, đổi Want to visit/Visited, thêm vào bộ sưu tập được xếp hàng; công khai, báo cáo, chặn, xóa tài khoản cần mạng.
 - BR-A6 Xung đột nhiều thiết bị (DEC-16): thao tác set-membership (lưu, thêm vào bộ) idempotent; trường đơn trị (Want to visit/Visited, tên bộ, tiêu đề) last-writer-wins theo thời điểm server nhận; xóa thắng sửa đồng thời; **riêng tư thắng công khai** khi xung đột hiển thị; xóa bộ sưu tập thắng thao tác thêm đồng thời.
-- BR-A7 Mất thiết bị: dữ liệu đã đồng bộ khôi phục khi đăng nhập máy mới; nháp chưa đồng bộ **mất** và điều này được công bố [ROADMAP §4]. Người dùng [PROPOSED] đăng xuất các phiên khác từ Profile.
+- BR-A7 Mất thiết bị: dữ liệu synced khôi phục khi đăng nhập máy mới; nháp chưa synced **mất**, công bố rõ [ROADMAP §4]. Đăng xuất phiên khác từ Profile đã duyệt A8; zone/công tắc local không tự khôi phục, cấu hình mới an toàn theo PRIV-02.
 - BR-A8 Xóa tài khoản trong app, có xác nhận/tái xác thực; quy trình và thời hạn ở `privacy-and-data.md` §5 [A2].
+- BR-A9 Đăng ký hỏi năm sinh (DEC-02 = 13+, duyệt 30/10/2026). Dưới 13: không tạo tài khoản, không giữ dữ liệu đã nhập. Server chỉ lưu năm sinh hoặc nhóm tuổi [PROPOSED].
+- BR-A10 Tài khoản 13–15 tuổi ở trạng thái **chờ người đại diện đồng ý** cho tới khi xác nhận theo DEC-24. Trong trạng thái này: camera, nháp, Map và tìm kiếm dùng được; ảnh, tọa độ và nhận diện địa điểm không rời thiết bị; app hiển thị rõ "Đang chờ cha mẹ/người giám hộ xác nhận". Người đại diện rút lại đồng ý → xử lý như xóa tài khoản. Cơ chế chi tiết chờ LEGAL (R-26).
+- BR-A11 Hạn mức upload riêng tư theo SAFE-12, gồm hạn mức tài khoản và hạn mức tổng dự báo từ ngân sách ảnh (DEC-07). Vượt hạn mức vẫn lưu ảnh trên máy, không tự xóa ảnh đã đồng bộ. Dừng upload không loại bỏ chi phí giữ ảnh cũ.
 
-### 7.7 Cộng đồng và an toàn
+### 7.6b Ngôn ngữ (DEC-01, duyệt 30/10/2026)
+
+- BR-I1 Tiếng Việt là ngôn ngữ mặc định và ngôn ngữ phát triển; tiếng Anh dịch đầy đủ (DODAY-L10N-01). Ngôn ngữ thiết bị khác → tiếng Việt.
+- BR-I2 Dữ liệu Google hiển thị theo ngôn ngữ Google trả về, không tự dịch; nội dung người dùng (tiêu đề) không dịch.
+- BR-I3 Văn bản pháp lý có bản tiếng Việt và tiếng Anh; bản tiếng Việt là bản gốc [PROPOSED – LEGAL xác nhận].
+
+### 7.7 Cộng đồng và an toàn (bản công khai – không có trong 1.0)
 
 - BR-C1 Báo cáo nội dung/người dùng, chặn người dùng, lọc nội dung không phù hợp, liên hệ công khai [Apple 1.2, truy cập 30/10/2026].
 - BR-C2 Người bị chặn: không thấy nhau ở Map cộng đồng, chi tiết địa điểm, Profile; áp dụng ở API.
-- BR-C3 Không có người hỗ trợ/kiểm duyệt được chỉ định → **không mở công khai** cho người thử nghiệm bên ngoài; app chạy chế độ chỉ riêng tư (cờ server) [ROADMAP G1].
-- BR-C4 Hạn mức đăng công khai [PROPOSED 30/ngày/tài khoản] và báo cáo [PROPOSED 20/ngày] chống spam.
+- BR-C3 Không có người kiểm duyệt được chỉ định → **không mở công khai** [ROADMAP G1]. Đã áp dụng cho 1.0 bằng cách không đưa tính năng công khai vào binary (DEC-15 C). Không dùng cờ server để bật tính năng ẩn sẵn.
+- BR-C4 B9 duyệt hướng khởi điểm 30 bài/ngày/tài khoản và 20 báo cáo/ngày chống spam **cho PUB sau**; còn phải chốt quyền/chính sách/người vận hành trước mở, không áp dụng 1.0.
 
 ## 8. Trạng thái và lỗi cần xử lý
 
@@ -219,8 +253,11 @@ Ký hiệu: **ĐV** đầu vào · **B** bước · **KQ** kết quả · **L** 
 | Nháp/đồng bộ | Đã lưu trên máy; đang tải lên; đã đồng bộ; lỗi thử lại; thất bại vĩnh viễn (ảnh hỏng) |
 | Map | Lần đầu trống; offline; viewport dày đặc; không có kết quả tìm kiếm; từ chối vị trí |
 | Thông tin Google | Đủ dữ liệu; thiếu từng trường; 4 business status + không xác định; đã di chuyển; lỗi/quá hạn mức; ID không hợp lệ |
+| Ảnh/review Google on-demand | Chưa yêu cầu xem; đang tải; có/không dữ liệu; photo name hết hạn; lỗi/429/quota; attribution; không cache bền vững sai chính sách |
+| Nhật ký cá nhân | Có/không Moment; ảnh hidden/không nơi; offline chỉ dữ liệu đã có; Google lỗi; sửa/xóa/đồng bộ; đổi tài khoản |
 | Share Sheet | Thành công có địa điểm; PENDING; chưa đăng nhập; offline; trùng; link lỗi; extension bị đóng |
-| Cộng đồng | Không có khoảnh khắc; nội dung bị ẩn do báo cáo; người bị chặn; chế độ công khai bị tắt (BR-C3) |
-| Tài khoản | Hết phiên; đăng xuất còn dữ liệu chưa đồng bộ; đổi tài khoản; đang xóa tài khoản; bị khóa |
+| Khoảnh khắc tại địa điểm (1.0) | Chưa có khoảnh khắc của chính người dùng; server từ chối yêu cầu công khai |
+| Cộng đồng (bản công khai) | Không có khoảnh khắc; nội dung bị ẩn do báo cáo; người bị chặn |
+| Tài khoản | Hết phiên; đăng xuất còn dữ liệu chưa đồng bộ; đổi tài khoản; đang xóa tài khoản; bị khóa; dưới 13 bị từ chối; 13–15 chờ người đại diện đồng ý; người đại diện rút đồng ý; đạt hạn mức upload ngày/dung lượng |
 
-Chuỗi hiển thị người dùng: tiếng Việt đầy đủ dấu; ngôn ngữ thêm theo DEC-01.
+Chuỗi hiển thị người dùng: tiếng Việt đầy đủ dấu (mặc định) và tiếng Anh (BR-I1).
