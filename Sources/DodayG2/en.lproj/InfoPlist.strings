@@ -1,0 +1,2 @@
+"NSCameraUsageDescription" = "Doday captures a private moment and saves it on this device.";
+"NSLocationWhenInUseUsageDescription" = "Only when you ask, Doday uses your location to check private zones on this device and, if you allow it, to find places near you or suggest a place for a photo.";
