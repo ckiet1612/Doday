@@ -1,0 +1,11 @@
+// Only the G2 target reads these settings. Live permission is not a key check.
+G2_MAPS_KEY =
+G2_PROXY_URL =
+G2_PROXY_TOKEN =
+G2_LIVE_APPROVED = NO
+// Signing identity and App Group. A free Apple ID (Personal Team) normally supports App Groups; if Xcode
+// refuses them, set both entitlement paths to empty in the private file to build without the Share inbox.
+G2_BUNDLE_ID = com.ckiet1612.doday.g2
+G2_APP_ENTITLEMENTS = Config/DodayG2.entitlements
+G2_SHARE_ENTITLEMENTS = Config/DodayG2Share.entitlements
+#include? "G2.private.xcconfig"

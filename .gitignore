@@ -9,3 +9,8 @@ xcuserdata/
 
 # Project được sinh ra từ project.yml bằng XcodeGen
 *.xcodeproj
+
+# G2 private lab configuration and unsanitized local artifacts
+Config/G2.private.xcconfig
+spikes/g2/places-proxy/.private/
+docs/g2/evidence-local/

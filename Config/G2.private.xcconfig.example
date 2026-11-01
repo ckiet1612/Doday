@@ -1,0 +1,18 @@
+// Copy to Config/G2.private.xcconfig (git-ignored) on the Mac that signs the G2 lab build.
+// Never commit the copy, paste it into chat, or attach it to evidence.
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+CODE_SIGN_STYLE = Automatic
+
+// Free Apple ID (Personal Team): only if Xcode reports that the team does not support App Groups,
+// uncomment both lines. The app still runs; the Share Extension then only shows received types.
+// G2_APP_ENTITLEMENTS =
+// G2_SHARE_ENTITLEMENTS =
+
+// Only if Xcode says the bundle ID is unavailable for your team: pick another unique reverse-DNS ID.
+// G2_BUNDLE_ID = com.yourname.doday.g2
+
+// Leave empty until live smoke testing has a separate written approval and spend cap.
+// Setting these does NOT unlock live calls: PlacesLab.liveAuthorized stays false in source.
+G2_MAPS_KEY =
+G2_PROXY_URL =
+G2_PROXY_TOKEN =
