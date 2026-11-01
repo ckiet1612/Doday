@@ -3,7 +3,7 @@ name: Doday
 options:
   bundleIdPrefix: com.ckiet1612
   deploymentTarget:
-    iOS: "15.0"
+    iOS: "17.0"
   createIntermediateGroups: true
 
 settings:
@@ -44,8 +44,6 @@ targets:
   DodayTests:
     type: bundle.unit-test
     platform: iOS
-    # XCTest trong Xcode 27 yêu cầu tối thiểu iOS 17; app vẫn hỗ trợ iOS 15
-    deploymentTarget: "17.0"
     sources:
       - Tests/DodayTests
     dependencies:
