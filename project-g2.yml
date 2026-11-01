@@ -1,0 +1,122 @@
+include:
+  - project.yml
+
+packages:
+  GoogleMaps:
+    url: https://github.com/googlemaps/ios-maps-sdk
+    exactVersion: 11.2.0
+
+targets:
+  G2Core:
+    type: framework
+    platform: iOS
+    sources: [Sources/G2Core]
+    configFiles:
+      Debug: Config/G2.xcconfig
+      Release: Config/G2.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday.g2.core
+        GENERATE_INFOPLIST_FILE: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+        TARGETED_DEVICE_FAMILY: "1"
+
+  DodayG2:
+    type: application
+    platform: iOS
+    sources: [Sources/DodayG2]
+    dependencies:
+      - target: G2Core
+      - target: DodayG2ShareExtension
+      - package: GoogleMaps
+    configFiles:
+      Debug: Config/G2.xcconfig
+      Release: Config/G2.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(G2_BUNDLE_ID)
+        CODE_SIGN_ENTITLEMENTS: $(G2_APP_ENTITLEMENTS)
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Doday G2
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        TARGETED_DEVICE_FAMILY: "1"
+        DEVELOPMENT_LANGUAGE: vi
+        INFOPLIST_KEY_NSCameraUsageDescription: Doday captures a private moment on this device.
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: Only when you ask, Doday uses your location to check private zones on this device and, if you allow it, to find places near you or suggest a place for a photo.
+        INFOPLIST_KEY_G2MapsKey: $(G2_MAPS_KEY)
+        INFOPLIST_KEY_G2LiveApproved: $(G2_LIVE_APPROVED)
+        INFOPLIST_KEY_G2ProxyURL: $(G2_PROXY_URL)
+        INFOPLIST_KEY_G2ProxyToken: $(G2_PROXY_TOKEN)
+
+  DodayG2ShareExtension:
+    type: app-extension
+    platform: iOS
+    sources: [Sources/DodayG2ShareExtension]
+    dependencies:
+      - target: G2Core
+    configFiles:
+      Debug: Config/G2.xcconfig
+      Release: Config/G2.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(G2_BUNDLE_ID).share
+        CODE_SIGN_ENTITLEMENTS: $(G2_SHARE_ENTITLEMENTS)
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Config/G2Share-Info.plist
+        APPLICATION_EXTENSION_API_ONLY: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        SKIP_INSTALL: YES
+
+  G2CoreTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests/G2CoreTests]
+    dependencies:
+      - target: G2Core
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday.g2.coretests
+
+  DodayG2Tests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests/DodayG2Tests]
+    dependencies:
+      - target: DodayG2
+      - target: G2Core
+        embed: false
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday.g2.apptests
+
+  DodayG2UITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [Tests/DodayG2UITests]
+    dependencies:
+      - target: DodayG2
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.ckiet1612.doday.g2.uitests
+
+schemes:
+  G2CoreTests:
+    build:
+      targets:
+        G2Core: all
+        G2CoreTests: [test]
+    test:
+      targets: [G2CoreTests]
+  DodayG2:
+    build:
+      targets:
+        DodayG2: all
+        DodayG2Tests: [test]
+        DodayG2UITests: [test]
+    test:
+      targets: [G2CoreTests, DodayG2Tests, DodayG2UITests]
+      gatherCoverageData: true

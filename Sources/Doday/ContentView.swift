@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        // NavigationView thay cho NavigationStack vì app hỗ trợ từ iOS 15
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 12) {
                 Image(systemName: "checkmark.circle")
                     .font(.system(size: 48))
@@ -14,7 +13,6 @@ struct ContentView: View {
             }
             .navigationTitle("Doday")
         }
-        .navigationViewStyle(.stack)
     }
 }
 
